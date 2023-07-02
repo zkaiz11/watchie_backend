@@ -25,6 +25,18 @@ export class AuthController {
   @UseInterceptors(ClassSerializerInterceptor)
   async register(@Body() userInfo: RegisterUserDto) {
     const { password, confirmPassword } = userInfo;
+    if (userInfo.username.length < 4) {
+      throw new HttpException(
+        'Username must be at least 4 characters',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
+    if (password.length < 8) {
+      throw new HttpException(
+        'Password must be at least 8 characters',
+        HttpStatus.BAD_REQUEST,
+      );
+    }
     if (password != confirmPassword)
       throw new HttpException('Passwords do not match', HttpStatus.BAD_REQUEST);
     const user: CreateUserParams = {
@@ -38,7 +50,7 @@ export class AuthController {
   @Public()
   @Post('login')
   async loginUser(@Body() userDetails: LoginUserDto) {
-    const isLogin = await this.authService.login(userDetails);
-    return isLogin;
+    const token = await this.authService.login(userDetails);
+    return token;
   }
 }

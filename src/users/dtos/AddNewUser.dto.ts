@@ -1,6 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 
-export class CreateUserDto {
+export class AddUserDto {
   @IsNotEmpty()
   username: string;
 
@@ -9,8 +9,12 @@ export class CreateUserDto {
 
   @IsNotEmpty()
   confirmPassword: string;
-}
 
-export class AddFavoriteMovieDto {
-  id: number;
+  first_name: string;
+
+  last_name: string;
+
+  isAdmin: boolean;
+
+  balance: number;
 }

@@ -36,6 +36,12 @@ export class User {
   @UpdateDateColumn()
   updated_at: Date;
 
+  @Column({ default: false })
+  isAdmin: boolean;
+
+  @Column({ default: 100 })
+  balance: number;
+
   @ManyToMany(() => Movie)
   @JoinTable()
   favorite_movies: Movie[];

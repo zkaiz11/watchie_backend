@@ -1,11 +1,4 @@
-import {
-  Column,
-  Entity,
-  JoinTable,
-  ManyToMany,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
-import { MovieCatagory } from './MovieCatagory';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'movies' })
 export class Movie {
@@ -25,12 +18,8 @@ export class Movie {
   thumbnailUrl: string;
 
   @Column()
-  genre: string;
-
-  @Column()
   duration: string;
 
-  @ManyToMany(() => MovieCatagory)
-  @JoinTable()
-  catagories: MovieCatagory[];
+  @Column()
+  genre: string;
 }

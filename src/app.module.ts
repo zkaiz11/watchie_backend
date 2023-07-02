@@ -7,7 +7,6 @@ import { MoviesModule } from './movies/movies.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './typeorm/entities/User';
 import { Movie } from './typeorm/entities/Movie';
-import { MovieCatagory } from './typeorm/entities/MovieCatagory';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { AuthGuard } from './auth/gaurds/auth/auth.guard';
@@ -25,7 +24,7 @@ import { APP_GUARD } from '@nestjs/core/constants';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [User, Movie, MovieCatagory],
+      entities: [User, Movie],
       synchronize: true,
     }),
     JwtModule.register({
