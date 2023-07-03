@@ -11,7 +11,7 @@ async function bootstrap() {
       'http://localhost:5173',
       'https://watchie-xl1e.vercel.app',
     ],
-    credentials: true,
+    credentials: false,
   });
   await app.listen(PORT || 3000);
 }
